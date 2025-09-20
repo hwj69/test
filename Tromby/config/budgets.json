@@ -1,0 +1,14 @@
+{
+  "Mode": {
+    "Qualite": {
+      "PerDay": { "Tokens": 100000, "Cost": 10.0 },
+      "PerConversation": { "Tokens": 10000, "Cost": 1.0 },
+      "SoftCapPercent": 80
+    },
+    "Eco": {
+      "PerDay": { "Tokens": 30000, "Cost": 2.0 },
+      "PerConversation": { "Tokens": 3000, "Cost": 0.3 },
+      "SoftCapPercent": 80
+    }
+  }
+}
