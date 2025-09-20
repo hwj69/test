@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWinUI>true</UseWinUI>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+    <RootNamespace>Tromby</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240802000" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+    <PackageReference Include="System.Management.Automation" Version="7.3.6" />
+    <PackageReference Include="System.Speech" Version="7.0.0" />
+    <PackageReference Include="YamlDotNet" Version="13.5.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\tests\Tromby.Tests\Tromby.Tests.csproj" Condition="'$(BuildingInsideVisualStudio)' == 'true'" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="App.xaml" />
+    <None Remove="UI/Views/ShellWindow.xaml" />
+    <None Remove="UI/Views/SettingsView.xaml" />
+    <None Remove="UI/Components/OnboardingCard.xaml" />
+    <None Remove="UI/Styles/Colors.xaml" />
+    <None Remove="UI/Styles/Theme.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml" />
+    <Page Include="UI/Views/ShellWindow.xaml" />
+    <Page Include="UI/Views/SettingsView.xaml" />
+    <Page Include="UI/Components/OnboardingCard.xaml" />
+    <Page Include="UI/Styles/Colors.xaml" />
+    <Page Include="UI/Styles/Theme.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets/Icons/tromby.ico" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,16 @@
+<UserControl
+    x:Class="Tromby.UI.Components.OnboardingCard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Background="#1AFFFFFF" CornerRadius="12" Padding="16" BorderBrush="{StaticResource AccentBrush}" BorderThickness="1">
+        <StackPanel Spacing="12">
+            <TextBlock Text="Bienvenue sur Tromby" Style="{StaticResource OverlayTitleText}" />
+            <TextBlock Text="Tromby fonctionne comme un copilote overlay. Configurez votre consentement et vos providers pour commencer." TextWrapping="Wrap" />
+            <StackPanel Orientation="Horizontal" Spacing="12">
+                <Button Content="Donner mon consentement" HorizontalAlignment="Left" Click="OnConsentClick" />
+                <CheckBox Content="Ne plus afficher" VerticalAlignment="Center" Checked="OnNeverShowChanged" Unchecked="OnNeverShowChanged" />
+            </StackPanel>
+            <Button Content="J'ai compris" HorizontalAlignment="Right" Click="OnDismissClick" />
+        </StackPanel>
+    </Border>
+</UserControl>

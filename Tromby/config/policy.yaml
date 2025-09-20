@@ -1,0 +1,42 @@
+limits:
+  api:
+    rps: 2
+    burst: 5
+    concurrent: 3
+    timeoutMs: 30000
+    retries: 3
+    breaker: { failureThreshold: 5, cooldownSec: 30 }
+  localModel:
+    maxCpuPercent: 60
+    maxMemoryMb: 4096
+  sandbox:
+    execTimeoutSec: 15
+    stdoutMaxKb: 1024
+    workingDirQuotaMb: 100
+    forbidChildProcesses: true
+  voice:
+    maxUtteranceSec: 90
+  storage:
+    cacheMaxMb: 1024
+    sessionsMaxMb: 500
+security:
+  allowedCommands:
+    - Get-Process
+    - Get-Service
+    - Get-ChildItem
+    - Get-Content
+    - Set-Content
+    - Test-NetConnection
+    - Get-WmiObject
+    - Get-EventLog
+    - Get-ComputerInfo
+    - Get-Command
+  requireConfirm:
+    - Set-Content
+    - Stop-Process
+    - Remove-Item
+consent:
+  reconsentOnPolicyChange: true
+scheduler:
+  qualityWindow: { start: "00:00", end: "06:00" }
+  overrideMinutes: 30

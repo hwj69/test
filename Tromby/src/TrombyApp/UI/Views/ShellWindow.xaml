@@ -1,0 +1,42 @@
+<Window
+    x:Class="Tromby.UI.Views.ShellWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:Tromby.UI.ViewModels"
+    xmlns:components="using:Tromby.UI.Components"
+    Title="Tromby"
+    Width="480"
+    Height="640"
+    ExtendsContentIntoTitleBar="True">
+    <Window.DataContext>
+        <vm:ShellViewModel />
+    </Window.DataContext>
+    <Grid Padding="{StaticResource OverlayPadding}" Background="{StaticResource OverlayBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+            <TextBlock Text="Tromby" Style="{StaticResource OverlayTitleText}" />
+            <TextBlock Text="·" Margin="0,0,4,0" Foreground="{StaticResource AccentBrush}" />
+            <TextBlock Text="{x:Bind ViewModel.ModeBadge, Mode=OneWay}" Foreground="{StaticResource AccentBrush}" />
+            <TextBlock Text="{x:Bind ViewModel.BudgetBadge, Mode=OneWay}" Margin="12,0,0,0" />
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Spacing="16">
+                <components:OnboardingCard
+                    Visibility="{x:Bind ViewModel.ShowOnboarding, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}"
+                    Dismissed="OnOnboardingDismissed" />
+                <ContentPresenter Content="{Binding MainContent}" />
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="12">
+            <Button Content="Poser une question" Command="{x:Bind ViewModel.TriggerInteractionCommand}" />
+            <Button Content="Réglages" Command="{x:Bind ViewModel.OpenSettingsCommand}" />
+        </StackPanel>
+    </Grid>
+</Window>
