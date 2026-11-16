@@ -1,0 +1,1 @@
+Le client [NOM_0002] (NIR [NIR_0001]) habite [ADR_0001].
