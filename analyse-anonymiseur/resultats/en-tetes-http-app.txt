@@ -1,0 +1,17 @@
+HTTP/1.1 200 Connection Established
+
+HTTP/2 200 
+date: Mon, 16 Nov 2026 20:34:40 GMT
+content-type: text/html; charset=UTF-8
+server: Apache
+x-content-type-options: nosniff
+x-frame-options: DENY
+x-xss-protection: 0
+referrer-policy: strict-origin-when-cross-origin
+permissions-policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+strict-transport-security: max-age=31536000
+content-security-policy: default-src 'self'; script-src 'self' 'sha256-kWnaurX70rKfRNxkmIL5N9nqf0UhktwQxuzwrZwaHx0='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'none'; worker-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+accept-ranges: bytes
+vary: Accept-Encoding
+cache-control: no-cache
+

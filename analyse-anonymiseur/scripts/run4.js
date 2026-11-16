@@ -1,0 +1,21 @@
+const { chromium } = require('playwright');
+const dir = process.argv[2];
+(async () => {
+  const b = await chromium.launch();
+  const ctx = await b.newContext({ acceptDownloads: true, viewport:{width:1400,height:900} });
+  const reqs = []; ctx.on('request', r => reqs.push(r.method()+' '+r.url()));
+  const p = await ctx.newPage();
+  await p.goto('https://worldofnumeric.fr/outils/anonymiseur/app/#dashboard', {waitUntil:'networkidle'});
+  await p.setInputFiles('#fileMain', dir+'/courrier.pdf');
+  await p.waitForTimeout(8000);
+  await p.click('#btnRun').catch(()=>{}); await p.waitForTimeout(4000);
+  await p.screenshot({path: dir+'/pdf_run.png', fullPage:true});
+  const T=await p.innerText('main'); console.log('TEXT', T.slice(T.indexOf('Téléchargez'), T.indexOf('Téléchargez')+1500)); console.log('IBANSEEN', /IBAN_0001/.test(T), /Lyon/.test(T));
+  await p.click('#btnExport'); await p.waitForTimeout(500);
+  console.log('MENU', (await p.locator('#exportMenu button').allInnerTexts()).join(' || '));
+  await p.keyboard.press('Escape'); const items = p.getByRole('button',{name:'PDF seul'});
+  const [dl] = await Promise.all([p.waitForEvent('download',{timeout:15000}), items.first().click()]);
+  await dl.saveAs(dir+'/OUTPDF_'+dl.suggestedFilename()); console.log('saved', dl.suggestedFilename());
+  console.log('REQS', reqs.filter(u=>!/\/assets\/|\/icons\//.test(u)).join('\n'));
+  await b.close();
+})();

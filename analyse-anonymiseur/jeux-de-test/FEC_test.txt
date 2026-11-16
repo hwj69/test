@@ -1,0 +1,6 @@
+JournalCode	JournalLib	EcritureNum	EcritureDate	CompteNum	CompteLib	CompAuxNum	CompAuxLib	PieceRef	PieceDate	EcritureLib	Debit	Credit	EcritureLet	DateLet	ValidDate	Montantdevise	Idevise
+VT	Ventes	1	20250115	411000	Clients	CDUPONT	Jean Dupont	F001	20250115	Facture Jean Dupont jean.dupont@gmail.com	1200,00	0,00			20250115		
+VT	Ventes	1	20250115	706000	Prestations			F001	20250115	Facture Jean Dupont	0,00	1200,00			20250115		
+BQ	Banque	2	20250120	512000	Banque			V002	20250120	Vir SARL BOULANGERIE MARTIN FR7630006000011234567890189	500,00	0,00			20250120		
+BQ	Banque	2	20250120	401000	Fournisseurs	FMARTIN	SARL Boulangerie Martin	V002	20250120	Paiement Mme Sophie Lefebvre tel 06 12 34 56 78	0,00	500,00			20250120		
+OD	OD	3	20250131	421000	Personnel	SALDURAND	Pierre Durand	S003	20250131	Salaire Pierre Durand NIR 1 85 05 78 006 084 91 SIREN 552 100 554	0,00	2100,00			20250131		

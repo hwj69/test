@@ -1,0 +1,20 @@
+const { chromium } = require('playwright');
+const [dir, file, btnName] = process.argv.slice(2);
+(async () => {
+  const b = await chromium.launch();
+  const ctx = await b.newContext({ acceptDownloads: true, viewport:{width:1400,height:900} });
+  const reqs = []; ctx.on('request', r => reqs.push(r.method()+' '+r.url()));
+  const p = await ctx.newPage();
+  await p.goto('https://worldofnumeric.fr/outils/anonymiseur/app/#dashboard', {waitUntil:'networkidle'});
+  await p.setInputFiles('#fileMain', dir+'/'+file);
+  await p.waitForTimeout(3000);
+  await p.click('#btnRun').catch(()=>{}); await p.waitForTimeout(4000);
+  await p.screenshot({path: dir+'/'+file+'_run.png', fullPage:true});
+  console.log('BTNS', (await p.locator('button:visible').allInnerTexts()).join(' | '));
+  const btn = p.getByRole('button',{name: btnName}).first();
+  const [dl] = await Promise.all([p.waitForEvent('download',{timeout:15000}), btn.click()]);
+  const out = dir+'/OUT_'+dl.suggestedFilename(); await dl.saveAs(out); console.log('saved', out);
+  console.log('TEXT', (await p.innerText('main')).slice(0,1500));
+  console.log('REQS', reqs.filter(u=>!/\/assets\/|\/icons\//.test(u)).join('\n'));
+  await b.close();
+})();

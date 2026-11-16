@@ -1,0 +1,4 @@
+Lyon, le 3 mars 2025
+Madame [NOM_0001], [ADR_0001] 69002 Lyon,
+Votre conseiller M. [NOM_0002] ([EMAIL_0001], [TEL_0001]) vous confirme le virement sur l'IBAN [IBAN_0001].
+[ENT_0001], SIRET [SIRET_0001]. NIR [NIR_0001]. Né le 12/05/1985 à Lyon.
